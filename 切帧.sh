@@ -34,11 +34,11 @@ if ! command -v ffmpeg &>/dev/null; then
     exit 1
 fi
 
-# 输出目录：视频同级目录下，以视频名命名
-VIDEO_DIR=$(dirname "$VIDEO")
+# 输出目录：当前脚本所在目录下，以视频名命名
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 VIDEO_NAME=$(basename "$VIDEO")
 STEM="${VIDEO_NAME%.*}"
-OUT_DIR="${VIDEO_DIR}/${STEM}_frames"
+OUT_DIR="${SCRIPT_DIR}/${STEM}_frames"
 
 mkdir -p "$OUT_DIR"
 
